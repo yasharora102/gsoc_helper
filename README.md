@@ -5,5 +5,5 @@ This app is suitable for beginners too as we suggest the best tech-stack that ca
 We have also built our own probability calculator that will help a student deduce his chances of getting selected for GSOC, which we calculate based on data collected from user and past GSOC data available.
 <br>
 
-## Tech Stack
+# Tech Stack
 We have built this project using FLutter so that it will enable us to deploy our source code for mobile-both Android and iOS, Web-app etc.
