@@ -15,11 +15,14 @@ class Org {
 
 class OrgData {
   static List<Org> list = [];
-  static Map<String,int> techStack5={};
+  static Map<String, int> techStack5 = {};
 
-  static List<List<dynamic>> getMap(){
-    List<List<dynamic>> asd=[[]];
-    techStack5.forEach((key, value) {asd.add([key,value]); });
+  static List<List<dynamic>> getMap() {
+    List<List<dynamic>> asd = [];
+    techStack5.forEach((key, value) {
+      List<dynamic> li = [key, value];
+      asd.add(li);
+    });
     return asd;
   }
 
@@ -27,14 +30,14 @@ class OrgData {
     final response = await rootBundle.loadString('assets/2021.json');
     var data = json.decode(response) as Map<String, dynamic>;
     int len = data["organizations"].length;
-    //print(len);
-    // data["organizations"][]["name"]
+    // print(len);
     for (int i = 0; i < len; i++) {
       String title = data["organizations"][i]["name"];
       String image = data["organizations"][i]["image_url"];
       List<dynamic> techStack = data["organizations"][i]["topics"];
-      String projectNo = data["organizations"][i]["num_projects"];
-      list.add(Org(title, image, techStack, projectNo));
+      int projectNo = data["organizations"][i]["num_projects"];
+      list.add(Org(title, image, techStack, projectNo.toString()));
+      // print("$title, $image, $techStack, $projectNo");
     }
 
     // print(response);
@@ -56,8 +59,6 @@ class OrgData {
         }
       }
     }
-    // int c1=0, c2=0, c3=0, c4=0, c5=0;
-    // String s1="", s2="", s3="", s4="", s5="";
     var sortedEntries = techCount.entries.toList()
       ..sort((e1, e2) {
         var diff = e2.value.compareTo(e1.value);
